@@ -73,7 +73,33 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: () => {
+    this.website = fmtUrl(this.props.website);
+    this.email = this.user.git.email();
+    this.name = this.user.git.name();
 
+    this.template('LICENSE');
+    this.template('README.md');
+    this.template('editorconfig', '.editorconfig');
+    this.template('_package.json', 'package.json');
+
+    const lint = this.props.installXO ? 'eslint_xo' : 'eslint_default';
+    this.template(lint, '.eslintrc');
+
+    if (this.props.gitinit) {
+      this.template('gitignore', '.gitignore');
+    }
+
+    if (this.props.installAva) {
+      this.directory('test');
+    }
+
+    if (this.props.travis) {
+      this.template('_travis.yml', '.travis.yml');
+    }
+
+    if (this.props.changelog) {
+      this.template('CHANGELOG.md');
+    }
   },
 
   install: () => {
