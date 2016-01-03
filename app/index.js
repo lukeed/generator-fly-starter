@@ -4,28 +4,32 @@ const chalk = require('chalk');
 const say = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
-  initializing: () => {
+  initializing: function() {
     this.pkg = require('../package.json');
   },
 
-  prompting: () => {
+  prompting: function() {
     const done = this.async();
 
     // Have Yeoman greet the user.
     this.log(say(
-      'Welcome to the peachy ' + chalk.red('Fly WebApp') + ' generator!'
+      'Welcome to the peachy ' + chalk.red('Fly Starter') + ' generator!'
     ));
 
     const prompts = [{
       name: 'username',
       message: 'What is your GitHub username?',
       store: true,
-      validate: val => val.length > 0 ? true : 'github needed'
+      validate: function(val) {
+        return val.length > 0 ? true : 'github needed';
+      }
     }, {
       name: 'website',
       message: 'What is your website?',
       store: true,
-      default: props => `http://github.com/${props.username}`
+      default: function(props) {
+        return 'http://github.com/' + props.username;
+      }
     }, {
       name: 'projectName',
       message: 'What is your project\'s name?',
@@ -33,7 +37,9 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       name: 'description',
       message: 'Please describe your project.',
-      default: props => `${props.projectName} was initialized with 'generator-fly-webapp'!`
+      default: function(props) {
+        return props.projectName + ' was initialized with \'generator-fly-webapp\'!';
+      }
     }, {
       type: 'confirm',
       name: 'installXO',
@@ -66,13 +72,16 @@ module.exports = yeoman.generators.Base.extend({
       default: true
     }];
 
-    this.prompt(prompts, (props) => {
+    this.prompt(prompts, function(props) {
       this.props = props;
       done();
-    });
+    }.bind(this));
   },
 
-  writing: () => {
+  writing: function() {
+    this.includeXO = this.props.installXO;
+    this.includeAva = this.props.installAva;
+
     this.website = fmtUrl(this.props.website);
     this.email = this.user.git.email();
     this.name = this.user.git.name();
@@ -91,7 +100,7 @@ module.exports = yeoman.generators.Base.extend({
       this.template('gitignore', '.gitignore');
     }
 
-    if (this.props.installAva) {
+    if (this.includeAva) {
       this.directory('test');
     }
 
@@ -104,11 +113,11 @@ module.exports = yeoman.generators.Base.extend({
     }
   },
 
-  install: () => {
+  install: function() {
     this.installDependencies({bower: false});
   },
 
-  end: () => {
+  end: function() {
     if (this.props.gitinit) {
       const self = this
       console.log('\n')

@@ -1,9 +1,8 @@
 {
-  "name": "<%= props.projectName %>",
+  "private": true,
   "version": "0.0.0",
   "description": "<%= props.description %>",
   "license": "MIT",
-  "repository": "https://github.com/<%= props.username %>/<%= props.projectName %>",
   "engines": {
     "iojs": ">= 1.0.0",
     "node": ">= 0.11.0"
@@ -29,9 +28,9 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    <% if (props.includeAva) { %> "ava": "^0.8.0", <% } %>
+    <% if (includeAva) { %> "ava": "^0.8.0", <% } %>
     "babel-eslint": "^4.1.6",
-    "browser-sync": "^2.10.0", <% if (props.includeXO) { %>
+    "browser-sync": "^2.10.0", <% if (includeXO) { %>
     "eslint-config-xo": "^0.9.0",
     <% } %>"eslint-plugin-babel": "^3.0.0",
     "fly": "^0.8.4",
