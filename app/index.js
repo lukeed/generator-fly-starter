@@ -81,6 +81,8 @@ module.exports = yeoman.generators.Base.extend({
     this.template('README.md');
     this.template('editorconfig', '.editorconfig');
     this.template('_package.json', 'package.json');
+    this.directory('src');
+    this.template('flyfile', 'flyfile.js');
 
     const lint = this.props.installXO ? 'eslint_xo' : 'eslint_default';
     this.template(lint, '.eslintrc');
