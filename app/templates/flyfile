@@ -3,23 +3,23 @@ const reload = browserSync.reload;
 
 const paths = {
   scripts: {
-    src: ['app/scripts/**/*.js'],
+    src: ['src/scripts/**/*.js'],
     dest: 'dist/js'
   },
   styles: {
-    src: ['app/styles/**/*.{sass,scss}'],
+    src: ['src/styles/**/*.{sass,scss}'],
     dest: 'dist/css'
   },
   images: {
-    src: ['app/images/**/*'],
+    src: ['src/images/**/*'],
     dest: 'dist/img'
   },
   fonts: {
-    src: ['app/fonts/**/*'],
+    src: ['src/fonts/**/*'],
     dest: 'dist/fonts'
   },
   html: {
-    src: ['app/*.html'],
+    src: ['src/*.html'],
     dest: 'dist'
   }
 };
@@ -112,7 +112,7 @@ export function * scripts() {
       presets: ['es2015'],
       sourceMaps: !isProd
     })
-    .concat('main.min.js')
+    .concat('main.js')
     .target(paths.scripts.dest);
 
   if (isWatch && isServer) {
@@ -125,10 +125,8 @@ export function * styles() {
   yield this
     .source(paths.styles.src)
     .sass({outputStyle: 'compressed'})
-    .autoprefixer({
-      browsers: ['Firefox <= 20']
-    })
-    .concat('main.min.css')
+    .autoprefixer()
+    .concat('main.css')
     .target(paths.styles.dest);
 
   if (isWatch && isServer) {
