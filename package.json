@@ -1,10 +1,10 @@
 {
-  "name": "generator-fly-webapp",
-  "version": "0.0.1",
+  "name": "generator-fly-starter",
+  "version": "0.0.2",
   "description": "Scaffold a front-end web app using Fly as the build system.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "lukeed/generator-fly-webapp",
+  "repository": "lukeed/generator-fly-starter",
   "author": {
     "name": "Luke Edwards",
     "email": "luke.edwards05@gmail.com",
