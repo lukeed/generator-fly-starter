@@ -1,4 +1,4 @@
-# generator-fly-starter [![Build Status](https://secure.travis-ci.org/lukeed/generator-fly-starter.png?branch=master)](https://travis-ci.org/lukeed/generator-fly-starter)
+# generator-fly-webapp [![Build Status](https://secure.travis-ci.org/lukeed/generator-fly-webapp.png?branch=master)](https://travis-ci.org/lukeed/generator-fly-webapp)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,16 +23,16 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-fly-starter from npm, run:
+To install generator-fly-webapp from npm, run:
 
 ```bash
-npm install -g generator-fly-starter
+npm install -g generator-fly-webapp
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo fly starter
+yo fly-webapp
 ```
 
 ### Getting To Know Yeoman
