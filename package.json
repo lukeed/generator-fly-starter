@@ -1,6 +1,6 @@
 {
   "name": "generator-fly-starter",
-  "version": "0.0.2",
+  "version": "0.3.0",
   "description": "Scaffold a front-end web app using Fly as the build system.",
   "license": "MIT",
   "main": "app/index.js",
